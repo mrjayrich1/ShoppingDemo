@@ -31,7 +31,7 @@ public class CartService : ICartService
         return new CartResponseDto
         {
             Items = itemDtos,
-            Subtotal = itemDtos.Sum(i => i.LineTotal)
+            Subtotal = Math.Round(itemDtos.Sum(i => i.LineTotal), 2)
         };
     }
 
