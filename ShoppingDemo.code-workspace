@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "backend-dotnet"
+		},
+		{
+			"path": "backend-java"
+		},
+		{
+			"path": "frontend-angular"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

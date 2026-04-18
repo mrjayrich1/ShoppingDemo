@@ -1,0 +1,24 @@
+# --- Java (Backend) ---
+target/
+build/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# --- .NET (Backend) ---
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# --- Angular (Frontend) ---
+node_modules/
+dist/
+.angular/
+npm-debug.log*
+
+# --- General / IDE ---
+.idea/
+*.swp
+.DS_Store

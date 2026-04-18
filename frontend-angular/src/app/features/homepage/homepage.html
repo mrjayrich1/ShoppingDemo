@@ -1,0 +1,64 @@
+<div style="max-width: 900px; margin: 40px auto; padding: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; border-radius: 12px;">
+    <button (click)="goToCart()" 
+          style="position: absolute; top: 20px; right: 20px; 
+                 background: #007bff; color: white; border-color: black;
+                 padding: 15px 24px; border-radius: 6px; cursor: pointer; font-size: 1.2rem;
+                 font-weight: bold; display: flex; align-items: center; gap: 8px;">
+        🛒 Cart
+    </button>
+
+    <h1>Web Store!</h1>
+
+    <h2>Products ({{ products().length }})</h2>
+    <div style="margin: 20px; text-align: center;">
+        <input 
+            type="text" 
+            placeholder="Search products..." 
+            (input)="updateSearch($event)"
+            style="padding: 10px; width: 100%; max-width: 400px; border-radius: 8px; border: 1px solid #ccc;"
+        />
+    </div>
+
+    @if (products().length === 0) {
+        <p style="color: #666; font-style: italic;">
+            No products found...
+        </p>
+    } @else {
+        @for (product of filteredProducts(); track product.id ?? product.title) {
+            <div style="padding: 18px; margin-bottom: 12px; border: 1px solid #eee; border-radius: 8px; background: white;">
+                <h3 style="margin: 0 0 8px 0;">{{ product.title }}</h3>
+                <h3 style="margin: 0 0 8px 0;">Price: ${{ product.price }}</h3>
+                <h3 style="margin: 0 0 8px 0;">Thumbnail: <img [src]=product.thumbnail height="125" width="125"></h3>
+                <h3 style="margin: 0 0 8px 0;">Description: 
+                    <span style="font-weight: normal; font-size: small;">{{ product.description }}</span>
+                </h3>
+                
+                <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <button type="button" 
+                                (click)="decreaseQuantity(product.id)"
+                                style="width: 32px; height: 32px; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 4px;">
+                        −
+                        </button>
+                        
+                        <span style="font-size: 1.1em; min-width: 30px; text-align: center; font-weight: bold;">
+                        {{ getQuantity(product.id) }}
+                        </span>
+                        
+                        <button type="button" 
+                                (click)="increaseQuantity(product.id)"
+                                style="width: 32px; height: 32px; border: 1px solid #ccc; background: white; cursor: pointer; border-radius: 4px;">
+                        +
+                        </button>
+                    </div>
+
+                    <button (click)="addToCart(product.id)" 
+                            style="background: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                        ➕ Add to cart
+                    </button>
+                </div>
+            </div>
+        }
+    }
+</div>
